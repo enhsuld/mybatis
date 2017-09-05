@@ -35,7 +35,8 @@ public class AuthorizationServerApplication extends SpringBootServletInitializer
     public void authenticationManager(AuthenticationManagerBuilder builder, UserRepository repository, OrgRepository orep, UserService userService) throws Exception {
         if (repository.count()==0 && orep.count()==0) {
             LutCmmOrganization org = new LutCmmOrganization();
-            org.setOrgname("tyder");
+            org.setName("tyder");
+            org.setIsactive(true);
             userService.saveOrg(org);
             LutRole rl = new LutRole();
             List<LutRole> roles= Arrays.asList(new LutRole("USER"), new LutRole("ACTUATOR"), new LutRole("ADMIN"));
